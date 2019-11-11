@@ -1,0 +1,15 @@
+<div>
+    <h1 mat-dialog-title>Cadastrar Nova Lista</h1>
+    <div mat-dialog-content>
+        <form [formGroup]="listForm" (ngSubmit)="onSubmit()">
+            <mat-form-field>
+                <input matInput placeholder="Nome" formControlName="name">
+            </mat-form-field>
+            <br>
+            <div>
+                <button type="submit" [mat-dialog-close]="true" mat-flat-button color="primary"
+                    [disabled]="!listForm.valid">Criar</button>
+            </div>
+        </form>
+    </div>
+</div>

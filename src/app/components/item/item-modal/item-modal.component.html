@@ -1,0 +1,18 @@
+<div>
+    <h1 mat-dialog-title>Cadastrar Novo Item</h1>
+    <div mat-dialog-content>
+        <form [formGroup]="itemForm" (ngSubmit)="onSubmit()">
+            <mat-form-field>
+                <input matInput placeholder="Nome" formControlName="name">
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-checkbox formControlName="completed">Check me!</mat-checkbox>
+            </mat-form-field>
+            <div>
+                <button type="submit" [mat-dialog-close]="true" mat-flat-button color="primary"
+                    [disabled]="!itemForm.valid">Criar</button>
+            </div>
+        </form>
+    </div>
+</div>

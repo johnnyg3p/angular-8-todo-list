@@ -1,0 +1,43 @@
+<div class="main-content">
+    <div>
+        <h1>Categoria</h1>
+        <button mat-raised-button (click)="addNewCategory()">+ Adicionar Categoria</button>
+    </div>
+
+    <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <!-- id Column -->
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> Numero </th>
+            <td mat-cell *matCellDef="let element; let i = index" (click)="selectCategory(element)">{{i}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Nome Categoria</th>
+            <td mat-cell *matCellDef="let element" (click)="selectCategory(element)">{{element.name}} </td>
+        </ng-container>
+
+        <!-- observe Column -->
+        <ng-container matColumnDef="observe">
+            <th mat-header-cell *matHeaderCellDef> Observação </th>
+            <td mat-cell *matCellDef="let element" (click)="selectCategory(element)"> {{element.observe}} </td>
+        </ng-container>
+
+        <!-- actions Column -->
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef> Ações </th>
+            <td mat-cell *matCellDef="let element">
+                <mat-icon (click)="editCategory(element)" color="primary">create</mat-icon>
+                <mat-icon (click)="deleteCategory(element.id)" color="warn">delete</mat-icon>
+            </td>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>

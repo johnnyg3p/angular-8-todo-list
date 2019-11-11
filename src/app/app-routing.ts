@@ -3,6 +3,7 @@ import { CategoryListComponent } from './components/category/category-list/categ
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
+import { ItemComponent } from './components/item/item/item.component';
 
 
 
@@ -16,8 +17,16 @@ const routes: Routes = [
         }
     },
     {
-        path: 'list/:id',
+        path: ':categoryId/list',
         component: TodoListComponent,
+        data: {
+            title: '',
+            description: ''
+        }
+    },
+    {
+        path: ':categoryId/list/:listId/itens',
+        component: ItemComponent,
         data: {
             title: '',
             description: ''

@@ -19,7 +19,8 @@ import {
   MatInputModule,
   MatTooltipModule,
   MatToolbarModule,
-  MatTableModule
+  MatTableModule,
+  MatCheckboxModule
 } from '@angular/material';
 import { CategoryListComponent } from './components/category/category-list/category-list.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -27,6 +28,8 @@ import { NewCategoryComponent } from './components/category/new-category/new-cat
 import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { TodoListModalComponent } from './components/list/todo-list-modal/todo-list-modal.component';
+import { ItemComponent } from './components/item/item/item.component';
+import { ItemModalComponent } from './components/item/item-modal/item-modal.component';
 
 
 @NgModule({
@@ -36,11 +39,14 @@ import { TodoListModalComponent } from './components/list/todo-list-modal/todo-l
     CategoryListComponent,
     NewCategoryComponent,
     TodoListComponent,
-    TodoListModalComponent
+    TodoListModalComponent,
+    ItemComponent,
+    ItemModalComponent
   ],
   entryComponents: [
     NewCategoryComponent,
-    TodoListModalComponent
+    TodoListModalComponent,
+    ItemModalComponent
   ],
   imports: [
     AppRouting,
@@ -52,6 +58,7 @@ import { TodoListModalComponent } from './components/list/todo-list-modal/todo-l
     MatListModule,
     MatDialogModule,
     MatButtonModule,
+    MatCheckboxModule,
     MatMenuModule,
     MatIconModule,
     MatCardModule,

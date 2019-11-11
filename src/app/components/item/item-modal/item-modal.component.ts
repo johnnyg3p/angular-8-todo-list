@@ -1,3 +1,4 @@
+import { MatDialogRef } from '@angular/material/dialog';
 import { Component, OnInit, Inject } from '@angular/core';
 import { Item } from '../../../models/item';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -18,6 +19,7 @@ export class ItemModalComponent implements OnInit {
   public categoryId: number;
   public listId: number;
   constructor(
+    public dialogRef: MatDialogRef<any>,
     private itemService: ItemDataService,
     private toasterService: ToasterService,
     @Inject(MAT_DIALOG_DATA) data
@@ -26,8 +28,9 @@ export class ItemModalComponent implements OnInit {
     this.categoryId = data.categoryId;
     this.listId = data.listId;
     this.itemForm = new FormGroup({
+      name: new FormControl(this.item.name || '', [Validators.required]),
       title: new FormControl(this.item.title || '', [Validators.required]),
-      complete: new FormControl(this.item.complete || false, [Validators.required])
+      done: new FormControl(this.item.done || false, [Validators.required])
     });
   }
 
@@ -39,8 +42,8 @@ export class ItemModalComponent implements OnInit {
     this.itemService.addNew(this.categoryId, this.listId, this.itemForm.value)
       .subscribe(
         (data) => {
-          console.log(data);
           this.toasterService.success('Sucesso', `Categoria ${data.title} adicionada com Sucesso`);
+          this.dialogRef.close(data);
         }
       );
   }

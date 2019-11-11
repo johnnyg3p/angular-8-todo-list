@@ -15,16 +15,26 @@
             <td mat-cell *matCellDef="let element; let i = index" (click)="selectItem(element)">{{i}} </td>
         </ng-container>
 
-        <!-- Name Column -->
+        <!-- Title Column -->
         <ng-container matColumnDef="title">
             <th mat-header-cell *matHeaderCellDef> Titulo</th>
+            <td mat-cell *matCellDef="let element" (click)="selectItem(element)">{{element.title}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Responsável</th>
             <td mat-cell *matCellDef="let element" (click)="selectItem(element)">{{element.name}} </td>
         </ng-container>
 
         <!-- observe Column -->
-        <ng-container matColumnDef="complete">
+        <ng-container matColumnDef="done">
             <th mat-header-cell *matHeaderCellDef> Finalizado </th>
-            <td mat-cell *matCellDef="let element" (click)="selectItem(element)"> {{element.observe}} </td>
+
+            <td mat-cell *matCellDef="let element" (click)="selectItem(element)">
+                <mat-icon *ngIf='element.done' color="primary">done</mat-icon>
+                <mat-icon *ngIf='!element.done' color="green">clear</mat-icon>
+            </td>
         </ng-container>
 
         <!-- actions Column -->
@@ -35,7 +45,6 @@
                 <mat-icon (click)="deleteItem(element.id)" color="warn">delete</mat-icon>
             </td>
         </ng-container>
-
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

@@ -3,14 +3,16 @@
     <div mat-dialog-content>
         <form [formGroup]="itemForm" (ngSubmit)="onSubmit()">
             <mat-form-field>
-                <input matInput placeholder="Nome" formControlName="name">
+                <input matInput placeholder="Responsável" formControlName="name">
             </mat-form-field>
             <br>
             <mat-form-field>
-                <mat-checkbox formControlName="completed">Check me!</mat-checkbox>
+                <input matInput placeholder="Tarefa" formControlName="title">
             </mat-form-field>
+            <br>           
+            <mat-checkbox color="primary" formControlName="done">Finalizado</mat-checkbox>
             <div>
-                <button type="submit" [mat-dialog-close]="true" mat-flat-button color="primary"
+                <button type="submit" [mat-dialog-close]="item" mat-flat-button color="primary"
                     [disabled]="!itemForm.valid">Criar</button>
             </div>
         </form>

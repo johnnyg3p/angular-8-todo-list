@@ -1,6 +1,7 @@
+import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToasterService } from '../../../services/toaster.service';
 import { Item } from '../../../models/item';
@@ -14,12 +15,12 @@ import { ItemModalComponent } from '../item-modal/item-modal.component';
 })
 export class ItemComponent implements OnInit {
 
-  public item: Item[];
+  public items: Item[];
   public categoryId: any;
   public listId: any;
 
-  displayedColumns: string[] = ['id', 'title', 'complete', 'actions'];
-  dataSource = new MatTableDataSource(this.item);
+  displayedColumns: string[] = ['id', 'title', 'name', 'done', 'actions'];
+  dataSource = new MatTableDataSource(this.items);
 
 
   constructor(
@@ -44,8 +45,8 @@ export class ItemComponent implements OnInit {
   getAll() {
     this.itemService.getAll(this.categoryId, this.listId).subscribe(
       (data) => {
-        this.item = data as Item[];
-        this.dataSource = new MatTableDataSource(this.item);
+        this.items = data as Item[];
+        this.dataSource = new MatTableDataSource(this.items);
       }
     );
   }
@@ -73,7 +74,11 @@ export class ItemComponent implements OnInit {
       categoryId: this.categoryId,
       listId: this.listId
     };
+    const dialogRef = this.dialog.open(ItemModalComponent, { data });
 
-    this.dialog.open(ItemModalComponent, { data });
+    dialogRef.afterClosed().subscribe(result => {
+      this.items.push(result);
+      this.dataSource = new MatTableDataSource(this.items);
+    });
   }
 }

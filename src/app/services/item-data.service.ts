@@ -28,6 +28,6 @@ export class ItemDataService {
   }
 
   remove(categoryId: number, listId: number, id: number): Observable<Item> {
-    return this.http.delete<Item>(`${environment.endpoint}/categories/${categoryId}/lists/${id}/${listId}/items/${id}`);
+    return this.http.delete<Item>(`${environment.endpoint}/categories/${categoryId}/lists/${listId}/items/${id}`);
   }
 }

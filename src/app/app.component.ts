@@ -8,7 +8,7 @@ import { Location } from '@angular/common';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'todo-list';
+  title = 'list';
 
   constructor(
      // private location: Location,

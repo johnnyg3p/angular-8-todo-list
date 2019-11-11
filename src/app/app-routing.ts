@@ -1,5 +1,5 @@
-import { TodoListComponent } from './components/todo-list/todo-list.component';
-import { CategoryListComponent } from './components/category-list/category-list.component';
+import { TodoListComponent } from './components/list/todo-list/todo-list.component';
+import { CategoryListComponent } from './components/category/category-list/category-list.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
@@ -16,8 +16,8 @@ const routes: Routes = [
         }
     },
     {
-        path: 'monte-sua-combinacao',
-        loadChildren: () => import('./components/todo-list/todo-list.component').then(m => m.TodoListComponent),
+        path: 'list/:id',
+        component: TodoListComponent,
         data: {
             title: '',
             description: ''

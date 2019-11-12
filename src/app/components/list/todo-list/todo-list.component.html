@@ -1,43 +1,43 @@
 <div class="main-content">
-        <div>
-            <h1>Listas</h1>
-            <button mat-raised-button (click)="addNewList()">+ Adicionar Lista</button>
-        </div>
-    
-        <mat-form-field>
-            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-        </mat-form-field>
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-    
-            <!-- id Column -->
-            <ng-container matColumnDef="id">
-                <th mat-header-cell *matHeaderCellDef> Numero </th>
-                <td mat-cell *matCellDef="let element; let i = index" (click)="selectList(element)">{{i}} </td>
-            </ng-container>
-    
-            <!-- Name Column -->
-            <ng-container matColumnDef="name">
-                <th mat-header-cell *matHeaderCellDef> Nome Lista</th>
-                <td mat-cell *matCellDef="let element" (click)="selectList(element)">{{element.name}} </td>
-            </ng-container>
-    
-            <!-- observe Column -->
-            <ng-container matColumnDef="observe">
-                <th mat-header-cell *matHeaderCellDef> Observação </th>
-                <td mat-cell *matCellDef="let element" (click)="selectList(element)"> {{element.observe}} </td>
-            </ng-container>
-    
-            <!-- actions Column -->
-            <ng-container matColumnDef="actions">
-                <th mat-header-cell *matHeaderCellDef> Ações </th>
-                <td mat-cell *matCellDef="let element">
-                    <mat-icon (click)="editList(element)" color="primary">create</mat-icon>
-                    <mat-icon (click)="deleteList(element.id)" color="warn">delete</mat-icon>
-                </td>
-            </ng-container>
-    
-    
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
+    <div>
+        <h1>Listas</h1>
+        <button mat-raised-button (click)="addNewList()">+ Adicionar Lista</button>
     </div>
+
+    <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <!-- id Column -->
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> Numero </th>
+            <td mat-cell *matCellDef="let element; let i = index" (click)="selectList(element)">{{i}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Nome Lista</th>
+            <td mat-cell *matCellDef="let element" (click)="selectList(element)">{{element.name}} </td>
+        </ng-container>
+
+        <!-- observe Column -->
+        <ng-container matColumnDef="observe">
+            <th mat-header-cell *matHeaderCellDef> Observação </th>
+            <td mat-cell *matCellDef="let element" (click)="selectList(element)"> {{element.observe}} </td>
+        </ng-container>
+
+        <!-- actions Column -->
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef> Ações </th>
+            <td mat-cell *matCellDef="let element">
+                <mat-icon (click)="editList(element)" color="primary" class="pointer">create</mat-icon>
+                <mat-icon (click)="deleteList(element.id)" color="warn" class="pointer">delete</mat-icon>
+            </td>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>

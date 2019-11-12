@@ -5,6 +5,7 @@ import { MAT_DIALOG_DATA } from '@angular/material';
 import { ToasterService } from '../../../services/toaster.service';
 import { ListDataService } from '../../../services/list-data.service';
 import { ActivatedRoute } from '@angular/router';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-todo-list-modal',
@@ -17,9 +18,9 @@ export class TodoListModalComponent implements OnInit {
   public listForm: FormGroup;
   public categoryId: number;
   constructor(
+    public dialogRef: MatDialogRef<any>,
     private ListService: ListDataService,
     private toasterService: ToasterService,
-    private route: ActivatedRoute,
     @Inject(MAT_DIALOG_DATA) data
   ) {
     this.list = data.list;
@@ -39,6 +40,7 @@ export class TodoListModalComponent implements OnInit {
         (data) => {
           console.log(data);
           this.toasterService.success('Sucesso', `Categoria ${data.name} adicionada com Sucesso`);
+          this.dialogRef.close(data);
         }
       );
   }

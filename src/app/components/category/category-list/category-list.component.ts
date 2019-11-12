@@ -67,7 +67,12 @@ export class CategoryListComponent implements OnInit {
   }
 
   openDialogEvent(category?: Category) {
-    this.dialog.open(NewCategoryComponent, { data: category });
+    const dialogRef = this.dialog.open(NewCategoryComponent, { data: category });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.categoryList.push(result);
+      this.dataSource = new MatTableDataSource(this.categoryList);
+    });
   }
 
 }

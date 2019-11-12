@@ -32,8 +32,8 @@
             <th mat-header-cell *matHeaderCellDef> Finalizado </th>
 
             <td mat-cell *matCellDef="let element" (click)="selectItem(element)">
-                <mat-icon *ngIf='element.done' color="primary">done</mat-icon>
-                <mat-icon *ngIf='!element.done' color="green">clear</mat-icon>
+                <mat-icon *ngIf='element.done' color="primary" class="pointer">done</mat-icon>
+                <mat-icon *ngIf='!element.done' color="green" class="pointer">clear</mat-icon>
             </td>
         </ng-container>
 

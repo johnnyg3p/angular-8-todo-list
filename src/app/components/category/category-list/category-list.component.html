@@ -31,8 +31,8 @@
         <ng-container matColumnDef="actions">
             <th mat-header-cell *matHeaderCellDef> Ações </th>
             <td mat-cell *matCellDef="let element">
-                <mat-icon (click)="editCategory(element)" color="primary">create</mat-icon>
-                <mat-icon (click)="deleteCategory(element.id)" color="warn">delete</mat-icon>
+                <mat-icon (click)="editCategory(element)" color="primary" class="pointer">create</mat-icon>
+                <mat-icon (click)="deleteCategory(element.id)" color="warn" class="pointer">delete</mat-icon>
             </td>
         </ng-container>
 

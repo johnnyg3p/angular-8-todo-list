@@ -11,13 +11,14 @@ export class AppComponent implements OnInit {
   title = 'list';
 
   constructor(
-     // private location: Location,
-    public dialog: MatDialog) { }
+    private location: Location,
+    public dialog: MatDialog
+  ) { }
 
   ngOnInit() { }
 
   returnButton() {
-     // this.location.back();
+    this.location.back();
   }
 
 }

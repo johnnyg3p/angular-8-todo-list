@@ -75,7 +75,12 @@ export class TodoListComponent implements OnInit {
       categoryId: this.categoryId
     };
 
-    this.dialog.open(TodoListModalComponent, { data });
+    const dialogRef = this.dialog.open(TodoListModalComponent, { data });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.list.push(result);
+      this.dataSource = new MatTableDataSource(this.list);
+    });
   }
 
 

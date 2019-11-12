@@ -10,7 +10,7 @@
                 <input matInput placeholder="Observação" formControlName="observe">
             </mat-form-field>
             <div>
-                <button type="submit" [mat-dialog-close]="true" mat-flat-button color="primary"
+                <button type="submit" [mat-dialog-close]="categoryForm.value" mat-flat-button color="primary"
                     [disabled]="!categoryForm.valid">Criar</button>
             </div>
         </form>

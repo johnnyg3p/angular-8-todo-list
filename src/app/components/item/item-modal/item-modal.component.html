@@ -12,8 +12,8 @@
             <br>
             <mat-checkbox color="primary" formControlName="done">Finalizado</mat-checkbox>
             <div>
-                <button type="submit" [mat-dialog-close]="item" mat-flat-button color="primary"
-                    [disabled]="!itemForm.valid">Criar</button>
+                <button type="submit" mat-flat-button color="primary"
+                    [disabled]="!itemForm.valid">{{buttonLabel}}</button>
             </div>
         </form>
     </div>

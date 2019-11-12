@@ -7,8 +7,8 @@
             </mat-form-field>
             <br>
             <div>
-                <button type="submit" [mat-dialog-close]="true" mat-flat-button color="primary"
-                    [disabled]="!listForm.valid">Criar</button>
+                <button type="submit" mat-flat-button color="primary"
+                    [disabled]="!listForm.valid">{{buttonLabel}}</button>
             </div>
         </form>
     </div>

@@ -17,7 +17,7 @@ export class TodoListComponent implements OnInit {
   public list: List[];
   public categoryId: any;
 
-  displayedColumns: string[] = ['id', 'name', 'observe', 'actions'];
+  displayedColumns: string[] = ['id', 'name', 'actions'];
   dataSource = new MatTableDataSource(this.list);
 
 
@@ -77,9 +77,8 @@ export class TodoListComponent implements OnInit {
 
     const dialogRef = this.dialog.open(TodoListModalComponent, { data });
 
-    dialogRef.afterClosed().subscribe(result => {
-      this.list.push(result);
-      this.dataSource = new MatTableDataSource(this.list);
+    dialogRef.afterClosed().subscribe(() => {
+      this.getAll();
     });
   }
 

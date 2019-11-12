@@ -77,8 +77,7 @@ export class ItemComponent implements OnInit {
     const dialogRef = this.dialog.open(ItemModalComponent, { data });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.items.push(result);
-      this.dataSource = new MatTableDataSource(this.items);
+      this.getAll();
     });
   }
 }

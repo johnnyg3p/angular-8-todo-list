@@ -1,9 +1,10 @@
 export class List {
 
     id: number;
-    name: string = '';
+    itemId: number;
+    name = '';
 
-    constructor(values: Object = {}) {
+    constructor(values = {}) {
         Object.assign(this, values);
     }
 }

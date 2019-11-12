@@ -12,11 +12,14 @@ import { MatDialogRef } from '@angular/material/dialog';
   templateUrl: './todo-list-modal.component.html',
   styleUrls: ['./todo-list-modal.component.css']
 })
-export class TodoListModalComponent implements OnInit {
+export class TodoListModalComponent {
 
   public list = new List();
   public listForm: FormGroup;
   public categoryId: number;
+  public isCreating: boolean;
+  public buttonLabel: string;
+
   constructor(
     public dialogRef: MatDialogRef<any>,
     private ListService: ListDataService,
@@ -25,24 +28,43 @@ export class TodoListModalComponent implements OnInit {
   ) {
     this.list = data.list;
     this.categoryId = data.categoryId;
+    this.isCreating = data.list.id ? false : true;
+    this.buttonLabel = this.isCreating ? 'Criar Lista' : 'Editar Lista';
     this.listForm = new FormGroup({
+      id: new FormControl(this.list.id || ''),
+      itemId: new FormControl(this.list.itemId || ''),
       name: new FormControl(this.list.name || '', [Validators.required])
     });
   }
 
-  ngOnInit() {
-
-  }
-
-  onSubmit() {
+  addNew() {
     this.ListService.addNew(this.categoryId, this.listForm.value)
       .subscribe(
         (data) => {
           console.log(data);
-          this.toasterService.success('Sucesso', `Categoria ${data.name} adicionada com Sucesso`);
+          this.toasterService.success('Sucesso', `Lista ${data.name} adicionada com Sucesso`);
           this.dialogRef.close(data);
         }
       );
   }
+
+  update() {
+    this.ListService.edit(this.categoryId, this.listForm.value)
+      .subscribe(
+        (data) => {
+          console.log(data);
+          this.toasterService.success('Sucesso', `Lista ${data.name} adicionada com Sucesso`);
+          this.dialogRef.close(data);
+        }
+      );
+  }
+
+  onSubmit() {
+    if (this.isCreating) {
+      this.addNew();
+    } else {
+      this.update();
+    }
+  };
 
 }

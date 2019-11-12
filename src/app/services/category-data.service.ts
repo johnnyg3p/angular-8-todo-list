@@ -26,7 +26,7 @@ export class CategoryDataService {
   }
 
   edit(category: Category): Observable<Category> {
-    return this.http.put<Category>(environment.endpoint + '/categories', category);
+    return this.http.put<Category>(environment.endpoint + `/categories/${category.id}`, category);
   }
 
   remove(id: number): Observable<Category> {
